@@ -38,7 +38,7 @@ fun MainNavigation() {
     val onLogoutClick: () -> Unit = {
         isLoggedIn = false
         globalNavController.navigate(RouteNavBarHomePage.HOME_PAGE) {
-            popUpTo(0) // Limpa a stack de navegação
+          launchSingleTop
         }
     }
 

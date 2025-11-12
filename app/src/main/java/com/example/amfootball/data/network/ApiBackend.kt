@@ -3,9 +3,11 @@ package com.example.amfootball.data.network
 import com.example.amfootball.data.dtos.CreateRoomRequest
 import com.example.amfootball.data.dtos.CreateRoomResponse
 import com.example.amfootball.data.dtos.CreateProfileDto
+import com.example.amfootball.data.dtos.FullProfileDto
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 // Isto é apenas um contrato, não tem lógica
@@ -21,14 +23,14 @@ interface ApiBackend {
     @POST("api/Player/create-profile")
     suspend fun createProfile(
         @Body request: CreateProfileDto
-    ): Response<Unit> //alterar o Unit pra retornar o perfil!
+    ): Response<FullProfileDto> //alterar o Unit pra retornar o perfil!
 
-    @POST("/api/chat/create-room")
+    @POST("api/chat/create-room")
     suspend fun createChatRoom(
         @Body request: CreateRoomRequest
     ): Response<CreateRoomResponse>
 
-    @GET("api/Player/get-my-profile")
+    @GET("api/User/get-profile")
     suspend fun getMyProfile(
-    ): Response<CreateProfileDto>
+    ): Response<FullProfileDto>
 }

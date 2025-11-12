@@ -13,6 +13,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -76,7 +77,11 @@ fun ScaffoldContentTeamNavBar(navController: NavHostController,
             ListMembersScreen()
         }
         composable(RoutesNavBarTeam.LIST_MEMBERSHIP_REQUEST) {
-            ListMemberShipRequest()
+            ListMemberShipRequest(
+                //Se correr mal lembrar que eu acrescentei essas duas linhas
+                navHostController = navController,
+                viewModel = viewModel()
+            )
         }
         composable(RoutesNavBarTeam.SEARCH_PLAYERS_WITHOU_TEAM){
             ListPlayersScreen()

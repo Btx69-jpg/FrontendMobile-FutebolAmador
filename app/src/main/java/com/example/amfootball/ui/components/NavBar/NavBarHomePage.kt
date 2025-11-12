@@ -1,5 +1,6 @@
 package com.example.amfootball.ui.components.NavBar
 
+import android.content.Context
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
@@ -43,6 +44,7 @@ import com.example.amfootball.navigation.Objects.Pages.AutRoutes
 import com.example.amfootball.navigation.Objects.GeralRoutes
 import com.example.amfootball.navigation.Objects.RotasUser
 import com.example.amfootball.R
+import com.example.amfootball.data.local.SessionManager
 import com.example.amfootball.ui.theme.AMFootballTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -88,7 +90,7 @@ fun ScaffoldContentNavBarHomePage(navController: NavHostController,
                                   globalNavController: NavHostController) {
     NavHost(navController = navController, startDestination = RouteNavBarHomePage.HOME_PAGE) {
         composable(RouteNavBarHomePage.HOME_PAGE) {
-            HomePageScreen(globalNavController = globalNavController)
+            HomePageScreen(globalNavController = globalNavController, sessionManager = SessionManager(globalNavController.context))
         }
         composable(RouteNavBarHomePage.EQUIPAS) {
             ListTeamScreen(navHostController = globalNavController)

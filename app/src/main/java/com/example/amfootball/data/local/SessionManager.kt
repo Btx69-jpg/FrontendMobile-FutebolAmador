@@ -3,6 +3,7 @@ package com.example.amfootball.data.local
 import android.content.Context
 import android.content.SharedPreferences
 import com.example.amfootball.data.dtos.CreateProfileDto
+import com.example.amfootball.data.dtos.FullProfileDto
 import com.google.gson.Gson // Importe o Gson
 
 /**
@@ -46,7 +47,7 @@ class SessionManager(context: Context) {
     /**
      * Guarda o objeto UserProfile como uma string JSON.
      */
-    fun saveUserProfile(profile: CreateProfileDto) {
+    fun saveUserProfile(profile: FullProfileDto) {
         val jsonString = gson.toJson(profile) // Converte objeto para JSON
         prefs.edit().putString(KEY_USER_PROFILE, jsonString).apply()
     }
@@ -56,10 +57,10 @@ class SessionManager(context: Context) {
      *
      * @return O objeto UserProfileDto, ou 'null' se não existir.
      */
-    fun getUserProfile(): CreateProfileDto? {
+    fun getUserProfile(): FullProfileDto? {
         val jsonString = prefs.getString(KEY_USER_PROFILE, null)
         return if (jsonString != null) {
-            gson.fromJson(jsonString, CreateProfileDto::class.java) // Converte JSON para objeto
+            gson.fromJson(jsonString, FullProfileDto::class.java) // Converte JSON para objeto
         } else {
             null
         }

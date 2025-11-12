@@ -6,24 +6,19 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import androidx.navigation.compose.rememberNavController
-import com.example.amfootball.R
-import com.example.amfootball.data.User
+import com.example.amfootball.data.local.SessionManager
 import com.example.amfootball.navigation.Objects.Pages.CrudTeamRoutes
-import com.example.amfootball.navigation.Objects.Pages.MatchInviteRoutes
+
 
 @Composable
 //fun HomePageScreen(currentUser: User?){
-fun HomePageScreen(globalNavController: NavHostController) {
+fun HomePageScreen(globalNavController: NavHostController, sessionManager: SessionManager) {
     Column {
         //NavigatonDrawerNavBarHomePage()
         Text(text = "AMFootball", modifier = Modifier.padding(8.dp))
-        //Text(text = "Bem-vindo ${currentUser?.name ?: "Convidado"}", modifier = Modifier.padding(8.dp))
-        Text(text = "Bem-vindo utilizador")
+        Text(text = "Bem-vindo ${sessionManager.getUserProfile()?.name ?: "Convidado"}", modifier = Modifier.padding(8.dp))
         Button(
             onClick = {
                 globalNavController.navigate(route = CrudTeamRoutes.CREATE_TEAM)
@@ -35,8 +30,11 @@ fun HomePageScreen(globalNavController: NavHostController) {
 }
 
 
+/*
 @Preview(showBackground = true)
 @Composable
 fun PreviewHomePage() {
-    HomePageScreen(globalNavController = rememberNavController())
+    HomePageScreen(globalNavController = rememberNavController(), sessionManager = SessionManager())
 }
+
+*/

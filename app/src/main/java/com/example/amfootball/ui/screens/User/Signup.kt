@@ -271,12 +271,13 @@ private fun FieldsSignUp(navHostController: NavHostController) {
 
                 val userProfile = CreateProfileDto(
                     userName = name,
-                    phone = phone,
+                    phone = "+351$phone",
                     height = height.toInt(),
                     dateOfBirth = apiDateFormatter.format(Date(dateOfBirth!!)),
                     position = position!!,
                     address = address,
-                    email = email
+                    email = email,
+                    password = password
                 )
 
                 scope.launch {

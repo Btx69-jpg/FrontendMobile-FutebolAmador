@@ -129,7 +129,6 @@ private fun FieldsLogin(navHostController: NavHostController) {
                         launchSingleTop = true
                     }
                 } else {
-                    //Lemmbrar de fazer as cenas da lingua como o artur disse
                     errorMessage = "Email ou password inválidos"
                 }
             }

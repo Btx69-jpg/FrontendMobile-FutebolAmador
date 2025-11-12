@@ -40,15 +40,25 @@ class AuthViewModel : ViewModel() {
 
             // busca os dados na api backend (descomentar quando a rota estiver pronta)
 
-             //val profile = apiService.getMyProfile("Bearer $token")
-            // sessionManager.saveUserProfile(profile)
+             val profile = apiService.getMyProfile()
+            Log.d("BACKEND RESPONSE", "RESPONSE: ${profile}")
 
-            return true // Login bem-sucedido
+            if (!profile.isSuccessful || profile.body() == null) {
+                throw Exception("Falha ao buscar perfil: ${profile.code()}")
+            }
+
+             sessionManager.saveUserProfile(profile.body()!!)
+            Log.d("PLAYERDATA", "PLAYERDATA: ${profile.body()}")
+
+            println("Login bem-sucedido com token: $token")
+
+            Log.d("PLAYER SALVO", sessionManager.getUserProfile().toString())
+            return true
 
         } catch (e: Exception) {
-            // Tratamento de erros
+
             println("Erro no login: ${e.message}")
-            return false // Login falhou
+            return false
         }
     }
 
@@ -68,7 +78,7 @@ class AuthViewModel : ViewModel() {
     suspend fun registerUser(profile: CreateProfileDto, password: String) {
         var createdFirebaseUser: FirebaseUser? = null
         try {
-            // Tenta criar o utilizador no Firebase
+            /*
             val authResult = firebaseAuth.createUserWithEmailAndPassword(profile.email, password).await()
 
             createdFirebaseUser = authResult.user
@@ -76,26 +86,25 @@ class AuthViewModel : ViewModel() {
                 // Lançar erro, registo falhou
                 throw Exception("Utilizador Firebase não foi criado.")
             }
-
-            // Obtem o token JWT do utilizador
             //pos forceRefresh = true garante que obtemos um token fresco
             val idTokenResult = createdFirebaseUser.getIdToken(true).await()
-            val token = idTokenResult.token
-
+            */
+            val response = apiService.createProfile( profile)
+            if (!response.isSuccessful || response.body() == null) {
+                throw Exception("Falha ao criar perfil: ${response.code()}")
+            }
+            val token = response.body()!!.firebaseLoginResponseDto?.idToken
+            Log.d("RESPOSTABACKEND REGISTRO", response.body().toString())
             if (token.isNullOrEmpty()) {
                 throw Exception("Não foi possível obter o token do Firebase.")
             }
 
             Log.d("TOKEN_TEST", "Bearer $token")
-
+            //TODO: deixar de salvar o token duas vezes, verificar de qual das duas formas é preferivel guardar
             sessionManager.saveAuthToken(token)
+            Log.d("PLAYERDATARegistar", "PLAYERDATA: ${response.body()}")
+            sessionManager.saveUserProfile(response.body()!!)
 
-            // criar o perfil no backend
-            val response = apiService.createProfile( profile)
-
-            if (!response.isSuccessful) {
-                throw Exception("Falha ao criar perfil: ${response.code()}")
-            }
 
         } catch (e: Exception) {
             println("Erro no registo: ${e.message}")

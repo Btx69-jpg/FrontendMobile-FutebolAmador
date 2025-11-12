@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.amfootball.App
 import com.example.amfootball.data.dtos.CreateProfileDto
+import com.example.amfootball.data.dtos.FullProfileDto
 import com.example.amfootball.data.network.RetrofitInstance
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -15,8 +16,8 @@ class ProfileViewModel : ViewModel() {
     private val apiService = RetrofitInstance.api
 
     // 1. O 'Flow' que o ecrã (Activity/Fragment) vai observar
-    private val _profileState = MutableStateFlow<CreateProfileDto?>(null)
-    val profileState: StateFlow<CreateProfileDto?> = _profileState
+    private val _profileState = MutableStateFlow<FullProfileDto?>(null)
+    val profileState: StateFlow<FullProfileDto?> = _profileState
 
     init {
         val cachedProfile = sessionManager.getUserProfile()

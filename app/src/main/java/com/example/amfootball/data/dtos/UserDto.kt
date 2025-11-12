@@ -3,9 +3,25 @@ package com.example.amfootball.data.dtos
 import com.google.gson.annotations.SerializedName
 
 data class FullProfileDto(
-    val userProfile: UserProfileDto,
-    val playerProfile: PlayerProfileDto
+    val name: String,
+    val dateOfBirth: String,
+    val phone: String,
+    val address: String,
+
+    val idTeam: String?,
+    val position: String?,
+    val isAdmin: Boolean?,
+    val height: Int?,
+
+    val firebaseLoginResponseDto: LoginResponse?
     )
+
+data class LoginResponse(
+    val idToken: String?,
+    val email: String,
+    val localId: String?
+)
+
 
 data class PlayerProfileDto(
     val userName: String,
@@ -32,6 +48,8 @@ data class CreateProfileDto(
     val phone: String,
     @SerializedName("Email")
     val email: String,
+    @SerializedName("Password")
+    val password: String,
     @SerializedName("Address")
     val address: String,
     @SerializedName("Position")
