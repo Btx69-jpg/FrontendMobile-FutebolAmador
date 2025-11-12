@@ -8,7 +8,7 @@ object RetrofitInstance {
 
     // MUDE ISTO para o URL base da sua API .NET
     //private const val BASE_URL = "http:192.168.196.1" // link com ngrok
-    private const val BASE_URL = "https://thrillful-temika-postlicentiate.ngrok-free.dev " // link com ngrok
+    private const val BASE_URL = "https://amfootballapi.duckdns.org" // link com ngrok
 
     //Cria o cliente aqui
     private val okHttpClient = OkHttpClient.Builder()
