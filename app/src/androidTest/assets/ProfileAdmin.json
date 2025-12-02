@@ -8,7 +8,10 @@
   "isAdminLastChanged": "2025-11-16T22:28:44.4130712",
   "position": 2,
   "height": 200,
-  "idTeam": "b5225be4-8336-4cc3-bb7a-e695a39a4fd0",
+  "team": {
+    "idTeam": "b5225be4-8336-4cc3-bb7a-e695a39a4fd0",
+    "name": ""
+  },
   "isAdmin": true,
   "firebaseLoginResponseDto": {
     "idToken": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjdjNzQ5NTFmNjBhMDE0NzE3ZjFlMzA4ZDZiMjgwZjQ4ZjFlODhmZGEiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vZnJvbnRlbmQtYW1mb290YmFsbCIsImF1ZCI6ImZyb250ZW5kLWFtZm9vdGJhbGwiLCJhdXRoX3RpbWUiOjE3NjQ1MjU0ODQsInVzZXJfaWQiOiJFWjlnRjR4c3d5YzFXRlR3UXdDQzk5bWhXY0QzIiwic3ViIjoiRVo5Z0Y0eHN3eWMxV0ZUd1F3Q0M5OW1oV2NEMyIsImlhdCI6MTc2NDUyNTQ4NCwiZXhwIjoxNzY0NTI5MDg0LCJlbWFpbCI6InZlbmNlZG9yQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicGhvbmVfbnVtYmVyIjoiKzM1MTkxOTExMTAwMCIsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidmVuY2Vkb3JAZ21haWwuY29tIl0sInBob25lIjpbIiszNTE5MTkxMTEwMDAiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJwYXNzd29yZCJ9fQ.p2OqL1i046-3azV9wio7wB2h_GDwoGAdTY-Q-ziV6vaMXg6zYNYgBireqs810xocg1GHYMtnmXfAwqcNywOf6qBxvWUrf70OJncPCVi9XnGx4IdVOD3T-H5HeKT_nmLAZSbYTOHoGP7BI3l51BomQDOCLLyJhzSh64iSzfCm3eDE3Yly3BPSknXyMxG66n1dDQ9BNfyKBxe8QEwP0vxjAW016uzsyn_oTilTGGf3CRAYGPVKDhT0DBC-EKhWtvxj1RUaUsNmyfGPhWwEj1MBonv3w-QOji9KQk7ye4f387guIMc9mu74NkNRM_fEH-d1nDcO1zZDgMea1BLri4nVdA",
